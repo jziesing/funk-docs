@@ -13,10 +13,5 @@ public with sharing class funkinvoker {
 		return jsonResponse;
     }
 
-	@auraEnabled
-    public static List<Account> fetchAccounts()
-    {
-        List<Account> conList=[SELECT Id,Name FROM Account];
-        return Account;
-    }
+
 }
