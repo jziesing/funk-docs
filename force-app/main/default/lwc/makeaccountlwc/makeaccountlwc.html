@@ -4,9 +4,15 @@
 	          <h2 class="slds-text-heading_small slds-m-bottom_small">
 	              Pick an Account to generate a PDF of all the Payments they have made
 	          </h2>
-			  <div>
-	        <h2>Select Account</h2>
-		        <lightning-input type="number" name="runs" value={amount} onchange={handleAmountChange} label="Enter the numbers of times you want to run this function" ></lightning-input>
+			 <div>
+		        <h2>Select Account</h2>
+				<lightning-combobox
+					name="accountsel"
+					label="Select an Account"
+					value={searchValue}
+					placeholder="Select an Account"
+					options={options}
+					onchange={handleChange} ></lightning-combobox>
 		    </div>
 	          <!-- Neutral variant (default) -->
 	          <lightning-button label="Run Function" title="Non-primary action" onclick={handleLoad} class="slds-m-left_x-small"></lightning-button>
@@ -18,5 +24,8 @@
 	          <!-- Neutral variant (default) -->
 	          <lightning-button label="Run Function" title="Non-primary action" onclick={handleLoad} class="slds-m-left_x-small"></lightning-button>
 		</div>
+
+
 	</lightning-card>
+
 </template>

@@ -15,7 +15,7 @@ public with sharing class funkinvoker {
 
 
 	@AuraEnabled(cacheable=true)
-    public static List<Account> getAccountList(String searchKey) {
+    public static List<Account> getAccountList() {
         string searchKeyword = '%' + searchKey + '%';
 
        // create contact list to store search result
@@ -23,8 +23,7 @@ public with sharing class funkinvoker {
 
 	   // query contact records
         for(Account accObj : [Select id,Name
-                            From Account
-                            WHERE name LIKE : searchKeyword]){
+                            From Account]){
            accountListRecord.add(accObj);
         }
 
