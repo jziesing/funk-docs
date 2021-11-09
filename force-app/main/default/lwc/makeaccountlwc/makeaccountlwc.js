@@ -14,34 +14,23 @@ export default class Makeaccountlwc extends LightningElement {
 
 	amount = 0;
 	searchValue = '';
+	accountsDropList = [];
 
-
-	getAccountList({}).then(result => {
-			// set @track contacts variable with return contact list from server
-			console.log('success');
-			console.log(result);
-			this.accounts = result;
-		})
-		.catch(error => {
-			console.log('errorr');
-			const event = new ShowToastEvent({
-				title: 'Error',
-				variant: 'error',
-				message: error.body.message,
-			});
-			this.dispatchEvent(event);
-			// reset contacts var with null
-			this.accounts = null;
-		});
 
 	get options() {
 		return getAccountList({}).then(result => {
 				// set @track contacts variable with return contact list from server
-				console.log('success');
+				console.log('raww');
 				console.log(result);
-				this.accounts = result;
+				this.accounts = JSON.parse(result);
+				console.log('success');
 				console.log(this.accounts);
-				return this.accounts;
+				for(let i=0; i<this.accounts.length; i++) {
+					this.accountsDropList.push({ label: this.accounts[i].name, value: this.accounts[i].id});
+				}
+				console.log(this.accountsDropList);
+
+				return this.accountsDropList;
 			})
 			.catch(error => {
 				console.log('errorr');
@@ -56,8 +45,6 @@ export default class Makeaccountlwc extends LightningElement {
 				return this.accounts;
     		});
 	}
-
-
 
 	handleChange(event) {
         this.searchValue = event.detail.value;
