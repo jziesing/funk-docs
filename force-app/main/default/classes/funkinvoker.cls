@@ -14,4 +14,26 @@ public with sharing class funkinvoker {
     }
 
 
+	@AuraEnabled(cacheable=true)
+    public static List<Account> getAccountList(String searchKey) {
+        string searchKeyword = '%' + searchKey + '%';
+
+       // create contact list to store search result
+        List<Account> accountListRecord = new List<Account>();
+
+	   // query contact records
+        for(Account accObj : [Select id,Name
+                            From Account
+                            WHERE name LIKE : searchKeyword]){
+           accountListRecord.add(accObj);
+        }
+
+         if(accountListRecord.size() == 0){
+            throw new AuraHandledException('No Record Found..');
+         }
+
+        return accountListRecord;
+    }
+
+
 }
