@@ -15,7 +15,7 @@ public with sharing class funkinvoker {
 
 
 	@AuraEnabled(cacheable=true)
-    public static List<Account> getAccountList() {
+    public static String getAccountList() {
 
        // create contact list to store search result
         List<Account> accountListRecord = new List<Account>();
