@@ -1,7 +1,4 @@
 import { LightningElement } from 'lwc';
-
-
-import { LightningElement, track } from 'lwc';
 import addAccount from '@salesforce/apex/funkinvoker.addAccount';
 
 export default class Makeaccountlwc extends LightningElement {
@@ -31,5 +28,5 @@ export default class Makeaccountlwc extends LightningElement {
 				});
 		}
 	}
-	
+
 }
