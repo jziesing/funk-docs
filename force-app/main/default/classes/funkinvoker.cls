@@ -33,5 +33,19 @@ public with sharing class funkinvoker {
         return JSON.serialize(accountListRecord);
     }
 
+	@AuraEnabled
+    public static String makePaymentDoc() {
+
+		System.debug('Invoking myfunction');
+
+		functions.Function myFunction = functions.Function.get('twilfunk.makepaymentsdoc');
+		functions.FunctionInvocation invocation = myFunction.invoke();
+		String jsonResponse = invocation.getResponse();
+
+		System.debug('Response from myfunction ' + jsonResponse);
+
+		return jsonResponse;
+    }
+
 
 }

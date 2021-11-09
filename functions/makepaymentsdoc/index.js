@@ -1,5 +1,5 @@
 /**
- * Describe Makeaccountfunk here.
+ * Describe Makepaymentsdoc here.
  *
  * The exported method is the entry point for your code when the function is invoked.
  *
@@ -20,39 +20,39 @@ export default async function(event, context, logger) {
 	);
 
 	// Extract Properties from Payload
-	const {
-		name,
-		accountNumber,
-		industry,
-		type,
-		website
-	} = event.data;
+	// const {
+	// 	name,
+	// 	accountNumber,
+	// 	industry,
+	// 	type,
+	// 	website
+	// } = event.data;
 
 	// Validate the payload params
-	if (!name) {
-		throw new Error(`Please provide account name`);
-	}
+	// if (!name) {
+	// 	throw new Error(`Please provide account name`);
+	// }
 
 	// Define a record using the RecordForCreate type and providing the Developer Name
-	const account = {
-		type: "Account",
-		fields: {
-			Name: `${name}-${Date.now()}`,
-			AccountNumber: accountNumber,
-			Industry: industry,
-			Type: type,
-			Website: website,
-		},
-	};
+	// const account = {
+	// 	type: "Account",
+	// 	fields: {
+	// 		Name: `${name}-${Date.now()}`,
+	// 		AccountNumber: accountNumber,
+	// 		Industry: industry,
+	// 		Type: type,
+	// 		Website: website,
+	// 	},
+	// };
 
 	try {
 		// Insert the record using the SalesforceSDK DataApi and get the new Record Id from the result
-		const {
-			id: recordId
-		} = await context.org.dataApi.create(account);
+		// const {
+		// 	id: recordId
+		// } = await context.org.dataApi.create(account);
 
 		// Query Accounts using the SalesforceSDK DataApi to verify that our new Account was created.
-		const soql = `SELECT Fields(STANDARD) FROM Account WHERE Id = '${recordId}'`;
+		const soql = `SELECT Id, Name, Account__c, Amount__c, Date_Paid__c FROM Payment WHERE Account__c = '0011h00000sqoXEAAY'`;
 		const queryResults = await context.org.dataApi.query(soql);
 		return queryResults;
 	} catch (err) {
