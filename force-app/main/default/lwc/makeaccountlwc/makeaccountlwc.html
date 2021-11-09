@@ -5,14 +5,7 @@
 	              Pick an Account to generate a PDF of all the Payments they have made
 	          </h2>
 			 <div>
-		        <h2>Select Account</h2>
-				<lightning-combobox
-					name="accountsel"
-					label="Select an Account"
-					value={searchValue}
-					placeholder="Select an Account"
-					options={options}
-					onchange={handleChange} ></lightning-combobox>
+		        <h2>Account Name: Salesforce</h2>
 		    </div>
 	          <!-- Neutral variant (default) -->
 	          <lightning-button label="Run Function" title="Non-primary action" onclick={handleLoad} class="slds-m-left_x-small"></lightning-button>
@@ -21,8 +14,6 @@
 	          <h2 class="slds-text-heading_small slds-m-bottom_small">
 	              See accounts added
 	          </h2>
-	          <!-- Neutral variant (default) -->
-	          <lightning-button label="Run Function" title="Non-primary action" onclick={handleLoad} class="slds-m-left_x-small"></lightning-button>
 		</div>
 
 
