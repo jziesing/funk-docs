@@ -30,7 +30,7 @@ public with sharing class funkinvoker {
             throw new AuraHandledException('No Record Found..');
          }
 
-        return accountListRecord;
+        return JSON.serialize(accountListRecord);
     }
 
 
